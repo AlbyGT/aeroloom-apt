@@ -1,0 +1,40 @@
+Architectures: all amd64 arm64
+Codename: stable
+Components: main
+Date: Sat, 07 Nov 2026 14:13:02 +0000
+Description: AeroLoom Official APT Repository
+Label: AeroLoom
+Origin: AeroLoom
+Suite: stable
+MD5Sum:
+ 689cefd96530283c9f89084c08ed3c3e              196 Release
+ 455b064f2c72eb48cefa47a715f38955              951 main/binary-all/Packages
+ 6bcc2650b59e9b3a11feb3077bbc90f9              644 main/binary-all/Packages.gz
+ 455b064f2c72eb48cefa47a715f38955              951 main/binary-amd64/Packages
+ 6bcc2650b59e9b3a11feb3077bbc90f9              644 main/binary-amd64/Packages.gz
+ 455b064f2c72eb48cefa47a715f38955              951 main/binary-arm64/Packages
+ 6bcc2650b59e9b3a11feb3077bbc90f9              644 main/binary-arm64/Packages.gz
+SHA1:
+ a0329f1c7bad304dfbaee655fc7d2cb885a4fb14              196 Release
+ e23478a9c841383776515a6dd3f0c0f5f8c04d80              951 main/binary-all/Packages
+ 79d3b4043f9279577cb53dca306d887716692b11              644 main/binary-all/Packages.gz
+ e23478a9c841383776515a6dd3f0c0f5f8c04d80              951 main/binary-amd64/Packages
+ 79d3b4043f9279577cb53dca306d887716692b11              644 main/binary-amd64/Packages.gz
+ e23478a9c841383776515a6dd3f0c0f5f8c04d80              951 main/binary-arm64/Packages
+ 79d3b4043f9279577cb53dca306d887716692b11              644 main/binary-arm64/Packages.gz
+SHA256:
+ 6751b1a4f87508d5482245dcb582c192f2f98849329a79c6f8b23b0e120d9f16              196 Release
+ 917cc39d413bd338639e8208e7e2e3ca34c9b4cb161990774b97f018b2caf7e0              951 main/binary-all/Packages
+ 7e1b59fa004d50a9509501c421a78842ef1135d67c8c728cfea065623f679f35              644 main/binary-all/Packages.gz
+ 917cc39d413bd338639e8208e7e2e3ca34c9b4cb161990774b97f018b2caf7e0              951 main/binary-amd64/Packages
+ 7e1b59fa004d50a9509501c421a78842ef1135d67c8c728cfea065623f679f35              644 main/binary-amd64/Packages.gz
+ 917cc39d413bd338639e8208e7e2e3ca34c9b4cb161990774b97f018b2caf7e0              951 main/binary-arm64/Packages
+ 7e1b59fa004d50a9509501c421a78842ef1135d67c8c728cfea065623f679f35              644 main/binary-arm64/Packages.gz
+SHA512:
+ ef810f48b2dd5561b710d2fd9960a3fe3ff6bcdceda0d67d9769f6cc23c1c635b8d5891acb6ea8f939850fd970532486383ad712e2c6018452580b2011ab05c4              196 Release
+ f3ac153a661e712c1b70be5f923e40869b042a5cab7d9f08a168143b225500098aa0a363fa834b768f8760d1c45ec05041f64a47c0a3075c017be73f83b7e495              951 main/binary-all/Packages
+ 98c6311acd4f2ec27d6b9ff6cfe75f10f30fcafbc1703d050d4102eeec7f37c8fd24c9dda3d29b2d1ff69515ed7c176f6ae26ea32f19bc883e5adf426819f404              644 main/binary-all/Packages.gz
+ f3ac153a661e712c1b70be5f923e40869b042a5cab7d9f08a168143b225500098aa0a363fa834b768f8760d1c45ec05041f64a47c0a3075c017be73f83b7e495              951 main/binary-amd64/Packages
+ 98c6311acd4f2ec27d6b9ff6cfe75f10f30fcafbc1703d050d4102eeec7f37c8fd24c9dda3d29b2d1ff69515ed7c176f6ae26ea32f19bc883e5adf426819f404              644 main/binary-amd64/Packages.gz
+ f3ac153a661e712c1b70be5f923e40869b042a5cab7d9f08a168143b225500098aa0a363fa834b768f8760d1c45ec05041f64a47c0a3075c017be73f83b7e495              951 main/binary-arm64/Packages
+ 98c6311acd4f2ec27d6b9ff6cfe75f10f30fcafbc1703d050d4102eeec7f37c8fd24c9dda3d29b2d1ff69515ed7c176f6ae26ea32f19bc883e5adf426819f404              644 main/binary-arm64/Packages.gz
