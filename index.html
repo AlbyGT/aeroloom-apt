@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AeroLoom Official APT Repository</title>
+  <title>AeroLoom - Official APT Repository & Production Reverse Proxy</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -13,6 +13,8 @@
       --heading: #f0f6fc;
       --accent: #58a6ff;
       --green: #3fb950;
+      --orange: #f0883e;
+      --purple: #bc8cff;
       --code-bg: #0b0f14;
     }
     body {
@@ -24,7 +26,7 @@
       padding: 0;
     }
     .container {
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 40px 20px 80px;
     }
@@ -44,23 +46,64 @@
     h1 {
       color: var(--heading);
       margin: 0 0 10px;
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
     p.lead {
       font-size: 1.15rem;
       color: #8b949e;
-      margin: 0 0 24px;
+      margin: 0 0 20px;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
     }
     .badge {
-      display: inline-block;
-      background: #1f6feb22;
+      display: inline-flex;
+      align-items: center;
+      background: #1f6feb1a;
       color: var(--accent);
-      border: 1px solid #1f6feb66;
-      padding: 4px 12px;
+      border: 1px solid #1f6feb44;
+      padding: 5px 12px;
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 20px;
+    }
+    .badge.green {
+      background: #2386361a;
+      color: var(--green);
+      border-color: #23863644;
+    }
+    .badge.purple {
+      background: #8957e51a;
+      color: var(--purple);
+      border-color: #8957e544;
+    }
+    .toc {
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 30px;
+      margin-bottom: 35px;
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--heading);
+      font-size: 1.1rem;
+    }
+    .toc ul {
+      margin: 0;
+      padding-left: 20px;
+      column-count: 2;
+      column-gap: 30px;
+    }
+    @media (max-width: 600px) {
+      .toc ul { column-count: 1; }
+    }
+    .toc li {
+      margin-bottom: 6px;
     }
     .card {
       background-color: var(--card-bg);
@@ -72,9 +115,12 @@
     .card h2 {
       margin-top: 0;
       color: var(--heading);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       border-bottom: 1px solid var(--border);
       padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     pre.code-block {
       background-color: var(--code-bg);
@@ -108,6 +154,52 @@
       color: var(--green);
       font-weight: 600;
     }
+    .tag-red {
+      color: #f85149;
+    }
+    .tag-neutral {
+      color: #8b949e;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 15px;
+    }
+    .trust-item {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+    .trust-item h4 {
+      margin: 0 0 6px;
+      color: var(--heading);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: #8b949e;
+    }
+    .bar-container {
+      margin-top: 8px;
+      background: #21262d;
+      border-radius: 4px;
+      overflow: hidden;
+      height: 12px;
+    }
+    .bar {
+      height: 100%;
+      border-radius: 4px;
+    }
+    .bar.green { background: var(--green); }
+    .bar.blue { background: var(--accent); }
+    .bar.orange { background: var(--orange); }
+    .bar.red { background: #f85149; }
     a {
       color: var(--accent);
       text-decoration: none;
@@ -120,6 +212,8 @@
       color: #8b949e;
       font-size: 0.85rem;
       margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
     }
   </style>
 </head>
@@ -134,13 +228,40 @@
 /_/  |_\___/_/   \____/_____/\____/\____/_/ /_/ /_/ 
       </pre>
       <h1>AeroLoom Official APT Repository</h1>
-      <p class="lead">Ultra-lightweight, zero-daemon Nginx reverse proxy & automated TLS manager for Linux.</p>
-      <div class="badge">Debian 11/12 &bull; Ubuntu 20.04/22.04/24.04 LTS &bull; 0.00 MB Idle RAM</div>
+      <p class="lead">The ultra-lightweight, zero-daemon Nginx reverse proxy & automated TLS manager for Linux.</p>
+      
+      <div class="badges">
+        <span class="badge green">&#10003; 0.00 MB Idle RAM (Zero Daemon)</span>
+        <span class="badge blue">&#10003; ~8 MB Total Disk Footprint</span>
+        <span class="badge purple">&#10003; Debian 11/12 &bull; Ubuntu 20.04/22.04/24.04 LTS</span>
+        <span class="badge">&#10003; GPG Cryptographically Signed</span>
+      </div>
     </header>
 
-    <div class="card">
-      <h2>Install via APT Repository</h2>
-      <p>Run these commands on your Debian or Ubuntu VPS:</p>
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#why-aeroloom">Why AeroLoom? (Vs The Competition)</a></li>
+        <li><a href="#feature-matrix">Feature Comparison Matrix</a></li>
+        <li><a href="#resource-comparison">Memory & Storage Comparison</a></li>
+        <li><a href="#trustworthiness">Trustworthiness & Engineering</a></li>
+        <li><a href="#architecture">Architecture Overview</a></li>
+        <li><a href="#quickstart">Quickstart Guide (Get Live in 60s)</a></li>
+        <li><a href="#quickstart">Step 1: Installation</a></li>
+        <li><a href="#interactive-wizard">Step 2: Interactive Wizard (aeroloom init)</a></li>
+        <li><a href="#declarative-table">Alternative: Declarative Table (apps.conf)</a></li>
+        <li><a href="#cli-reference">CLI Reference</a></li>
+        <li><a href="#automated-renewals">Automated Zero-Idle Renewals</a></li>
+        <li><a href="#hardening">Production Hardening & Safeguards</a></li>
+        <li><a href="#uninstall">Uninstall & Decommissioning</a></li>
+      </ul>
+    </div>
+
+    <!-- Quickstart Installation -->
+    <div class="card" id="quickstart">
+      <h2>Step 1: Installation</h2>
+      <p>Install AeroLoom directly from this official GPG-signed APT repository on Debian or Ubuntu:</p>
       <pre class="code-block"># 1. Setup keyring directory and fetch GPG key
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo apt-get update && sudo apt-get install -y --no-install-recommends curl gnupg
@@ -163,8 +284,36 @@ sudo apt-get install -y --no-install-recommends aeroloom
 sudo aeroloom init</pre>
     </div>
 
-    <div class="card">
-      <h2>Why AeroLoom?</h2>
+    <!-- Interactive Wizard Preview -->
+    <div class="card" id="interactive-wizard">
+      <h2>Step 2: Interactive Wizard (aeroloom init)</h2>
+      <p>Configure domains with automated TLS and port auto-discovery in 30 seconds:</p>
+      <pre class="code-block">$ sudo aeroloom init
+
+1. Enter public domain name: api.myapp.com
+--> Checking DNS A record for api.myapp.com...
+    [✓] DNS verified! api.myapp.com resolves to 198.51.100.42
+
+2. Select routing type:
+   [1] Reverse Proxy HTTP/WebSocket traffic to a backend service (Default)
+   [2] Serve static files from a local directory root
+   Choice [1/2, default: 1]: 1
+
+3. Enter upstream backend port or host:port:
+   Auto-detected active local services:
+     [1] 3000 (node)
+     [2] 8080 (docker-proxy)
+     [m] Enter custom port or host:port manually
+   Select option [1-2] or enter port directly [default: 1]: 1
+   [✓] Verified backend reachable on 127.0.0.1:3000
+
+4. Request Let's Encrypt TLS certificate via ACME now? [Y/n]: y
+==> Successfully hot-swapped TLS context for 'api.myapp.com' (zero downtime).</pre>
+    </div>
+
+    <!-- Feature Comparison Matrix -->
+    <div class="card" id="feature-matrix">
+      <h2>Feature Comparison Matrix</h2>
       <table>
         <thead>
           <tr>
@@ -173,57 +322,247 @@ sudo aeroloom init</pre>
             <th>Nginx Proxy Manager</th>
             <th>Traefik</th>
             <th>Caddy</th>
+            <th>Certbot + Nginx</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>Idle Memory (RAM)</strong></td>
-            <td class="tag-green">0.00 MB (No daemon)</td>
-            <td>150 MB – 250 MB</td>
-            <td>45 MB – 80 MB</td>
-            <td>35 MB – 50 MB</td>
+            <td class="tag-green"><strong>0.00 MB</strong> (Zero daemon)</td>
+            <td class="tag-red">150 MB – 250 MB</td>
+            <td class="tag-neutral">45 MB – 80 MB</td>
+            <td class="tag-neutral">35 MB – 50 MB</td>
+            <td class="tag-neutral">0 MB / 25 MB</td>
+          </tr>
+          <tr>
+            <td><strong>Total Disk Footprint</strong></td>
+            <td class="tag-green"><strong>~8 MB – 12 MB</strong></td>
+            <td class="tag-red">1,200 MB – 1,800 MB</td>
+            <td class="tag-neutral">120 MB – 250 MB</td>
+            <td class="tag-neutral">80 MB – 150 MB</td>
+            <td class="tag-neutral">150 MB – 220 MB</td>
           </tr>
           <tr>
             <td><strong>Docker Required?</strong></td>
-            <td class="tag-green">No (Native POSIX)</td>
-            <td>Yes</td>
-            <td>Optional</td>
-            <td>No</td>
+            <td class="tag-green"><strong>No</strong> (Native POSIX)</td>
+            <td class="tag-red">Yes</td>
+            <td class="tag-neutral">Optional</td>
+            <td class="tag-green">No</td>
+            <td class="tag-green">No</td>
           </tr>
           <tr>
-            <td><strong>Runtime Stack</strong></td>
-            <td class="tag-green">POSIX /bin/sh (dash)</td>
-            <td>Node.js + Python + DB</td>
-            <td>Go Runtime</td>
-            <td>Go Runtime</td>
+            <td><strong>Runtime Dependencies</strong></td>
+            <td class="tag-green">Strict POSIX /bin/sh</td>
+            <td class="tag-red">Node.js + Python + DB</td>
+            <td class="tag-neutral">Go Runtime</td>
+            <td class="tag-neutral">Go Runtime</td>
+            <td class="tag-red">Python 3 + 30+ libs</td>
           </tr>
           <tr>
-            <td><strong>Setup Wizard</strong></td>
-            <td class="tag-green">CLI with DNS pre-check</td>
-            <td>Web Browser UI</td>
-            <td>None</td>
-            <td>None</td>
+            <td><strong>Interactive CLI Wizard</strong></td>
+            <td class="tag-green"><strong>Yes (aeroloom init)</strong></td>
+            <td class="tag-neutral">Browser Web UI</td>
+            <td class="tag-red">No</td>
+            <td class="tag-red">No</td>
+            <td class="tag-neutral">Interactive CLI</td>
           </tr>
           <tr>
-            <td><strong>Zero-Downtime Hot Swap</strong></td>
-            <td class="tag-green">Yes (nginx -s reload)</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
+            <td><strong>DNS Pre-Flight Check</strong></td>
+            <td class="tag-green"><strong>Yes (dig vs server IP)</strong></td>
+            <td class="tag-red">No</td>
+            <td class="tag-red">No</td>
+            <td class="tag-red">No</td>
+            <td class="tag-red">No</td>
+          </tr>
+          <tr>
+            <td><strong>Port Auto-Discovery</strong></td>
+            <td class="tag-green"><strong>Yes (Node, Docker, etc.)</strong></td>
+            <td class="tag-red">No</td>
+            <td class="tag-neutral">Docker labels only</td>
+            <td class="tag-red">No</td>
+            <td class="tag-red">No</td>
+          </tr>
+          <tr>
+            <td><strong>Zero-Downtime Hot-Swap</strong></td>
+            <td class="tag-green"><strong>Yes (nginx -s reload)</strong></td>
+            <td class="tag-green">Yes</td>
+            <td class="tag-green">Yes</td>
+            <td class="tag-green">Yes</td>
+            <td class="tag-neutral">Manual reload</td>
+          </tr>
+          <tr>
+            <td><strong>Ideal VPS Size</strong></td>
+            <td class="tag-green"><strong>Any (512 MB – 64 GB+)</strong></td>
+            <td class="tag-red">&ge; 2 GB RAM</td>
+            <td class="tag-neutral">&ge; 1 GB RAM</td>
+            <td class="tag-neutral">&ge; 1 GB RAM</td>
+            <td class="tag-neutral">&ge; 1 GB RAM</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="card">
-      <h2>Repository Structure</h2>
+    <!-- Memory & Storage Comparison -->
+    <div class="card" id="resource-comparison">
+      <h2>Memory & Storage Comparison (Vs Competitors)</h2>
+      
+      <h3>1. Resident RAM Consumption at Idle</h3>
+      <p style="color:#8b949e; font-size:0.9rem;">How much RAM the proxy manager consumes just sitting idle with 0 active web requests:</p>
+      
+      <p><strong>AeroLoom:</strong> 0.00 MB resident daemon overhead (Only Nginx runs: ~4 MB)</p>
+      <div class="bar-container"><div class="bar green" style="width: 2%;"></div></div>
+      
+      <p style="margin-top:14px;"><strong>Caddy:</strong> ~40 MB resident Go runtime</p>
+      <div class="bar-container"><div class="bar blue" style="width: 20%;"></div></div>
+      
+      <p style="margin-top:14px;"><strong>Traefik:</strong> ~60 MB resident Go runtime</p>
+      <div class="bar-container"><div class="bar orange" style="width: 30%;"></div></div>
+      
+      <p style="margin-top:14px;"><strong>Nginx Proxy Manager:</strong> ~200 MB resident (Node.js + Python + DB daemon)</p>
+      <div class="bar-container"><div class="bar red" style="width: 95%;"></div></div>
+
+      <h3 style="margin-top:30px;">2. Storage Footprint Breakdown</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>AeroLoom</th>
+            <th>Certbot + Nginx</th>
+            <th>Nginx Proxy Manager</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CLI / Proxy Manager</td>
+            <td class="tag-green"><strong>68 KB</strong></td>
+            <td>150 MB (Python tree)</td>
+            <td>1,500 MB (Docker images)</td>
+          </tr>
+          <tr>
+            <td>ACME Client</td>
+            <td class="tag-green"><strong>85 KB (uacme in C)</strong></td>
+            <td>Included above</td>
+            <td>Included above</td>
+          </tr>
+          <tr>
+            <td>Database Engine</td>
+            <td class="tag-green"><strong>0 KB (Plain table)</strong></td>
+            <td>0 KB</td>
+            <td>100 MB+ (MariaDB/SQLite)</td>
+          </tr>
+          <tr>
+            <td>Total Disk Space</td>
+            <td class="tag-green"><strong>~8 MB – 12 MB</strong></td>
+            <td><strong>~155 MB – 220 MB</strong></td>
+            <td><strong>~1.2 GB – 1.8 GB</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Trustworthiness & Production Engineering -->
+    <div class="card" id="trustworthiness">
+      <h2>Trustworthiness & Production-Grade Engineering</h2>
+      <p style="color: #8b949e; margin-top:0;">Why engineers trust AeroLoom on mission-critical Debian & Ubuntu production servers:</p>
+      
+      <div class="trust-grid">
+        <div class="trust-item">
+          <h4>&#128272; GPG Cryptographic Signing</h4>
+          <p>Every .deb archive and release manifest is signed with GPG keys. Your OS validates authenticity before installation.</p>
+        </div>
+        <div class="trust-item">
+          <h4>&#128269; 100% Auditable Shell</h4>
+          <p>Strict POSIX shell code. No black-box compiled binaries, zero closed-source blobs, zero telemetry, and zero tracking.</p>
+        </div>
+        <div class="trust-item">
+          <h4>&#9878; Cryptographic Modulus Checks</h4>
+          <p>Verifies RSA moduli between public certificates and private keys before Nginx reloads to prevent broken TLS handshakes.</p>
+        </div>
+        <div class="trust-item">
+          <h4>&#128737; Zero-Downtime Safe Fallbacks</h4>
+          <p>If ACME fails or DNS propagates slowly, fallback self-signed certificates remain active. Nginx never drops traffic.</p>
+        </div>
+        <div class="trust-item">
+          <h4>&#128271; Sandboxed Systemd Units</h4>
+          <p>Renewal jobs execute under isolated systemd oneshot units with PrivateTmp=true, ProtectSystem=full, and ProtectHome=true.</p>
+        </div>
+        <div class="trust-item">
+          <h4>&#9889; Automated Chaos Test Suite</h4>
+          <p>Validated against comprehensive automated test suites including simulated network partitions, NTP drift, and race conditions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Declarative Table Alternative -->
+    <div class="card" id="declarative-table">
+      <h2>Alternative: Declarative Table (apps.conf)</h2>
+      <p>For GitOps and power users, manage all virtual hosts in <code>/etc/aeroloom/apps.conf</code>:</p>
+      <pre class="code-block"># /etc/aeroloom/apps.conf
+# &lt;domain&gt;             &lt;action&gt;  &lt;target&gt;
+api.example.com        proxy     127.0.0.1:3000
+app.example.com        proxy     127.0.0.1:8080
+static.example.com     root      /var/www/static</pre>
+      <p>Apply changes with a single command: <code>sudo aeroloom sync</code></p>
+    </div>
+
+    <!-- CLI Reference -->
+    <div class="card" id="cli-reference">
+      <h2>CLI Reference</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>sudo aeroloom init</code></td>
+            <td>Interactive onboarding wizard with DNS pre-check and port auto-discovery</td>
+          </tr>
+          <tr>
+            <td><code>sudo aeroloom sync</code></td>
+            <td>Idempotent sync: compiles vhosts, reloads Nginx, and issues/renews certificates</td>
+          </tr>
+          <tr>
+            <td><code>sudo aeroloom renew</code></td>
+            <td>Silent background renewal audit (used by systemd timer)</td>
+          </tr>
+          <tr>
+            <td><code>sudo aeroloom renew -v</code></td>
+            <td>Verbose renewal audit showing remaining validity for each domain</td>
+          </tr>
+          <tr>
+            <td><code>sudo aeroloom compile</code></td>
+            <td>Compiles vhosts and bootstraps self-signed certs (no ACME network calls)</td>
+          </tr>
+          <tr>
+            <td><code>sudo aeroloom check &lt;domain&gt;</code></td>
+            <td>Checks whether a domain certificate requires issuance or renewal</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Hardening & Safeguards -->
+    <div class="card" id="hardening">
+      <h2>Production Hardening & Safeguards</h2>
       <ul>
-        <li><strong>Distribution:</strong> <code>stable</code></li>
-        <li><strong>Component:</strong> <code>main</code></li>
-        <li><strong>Architectures:</strong> <code>all</code>, <code>amd64</code>, <code>arm64</code></li>
-        <li><strong>Signing Key:</strong> <code>keys/aeroloom-archive-keyring.asc</code></li>
-        <li><strong>Release Manifest:</strong> <a href="dists/stable/Release">dists/stable/Release</a> (Signed via InRelease & Release.gpg)</li>
+        <li><strong>Race-Free Concurrency:</strong> Atomic process mutex directory locks (<code>/run/aeroloom.lock</code>) prevent overlapping cron jobs.</li>
+        <li><strong>Atomic Staging:</strong> Certificates are generated in <code>.staging</code> and validated before being atomically moved into place.</li>
+        <li><strong>Post-Reload Probing:</strong> Probes live port 443 with <code>openssl s_client</code> to verify Nginx activated the new certificate.</li>
+        <li><strong>Rate-Limit Protection:</strong> Validates DNS resolution before querying Let's Encrypt to prevent IP rate-limiting.</li>
       </ul>
+    </div>
+
+    <!-- Uninstall -->
+    <div class="card" id="uninstall">
+      <h2>Uninstall & Decommissioning</h2>
+      <pre class="code-block"># Standard uninstall (preserves configs & SSL certificates):
+sudo ./uninstall.sh
+
+# Complete purge (removes all certificates, ACME data, and configs):
+sudo ./uninstall.sh --purge</pre>
     </div>
 
     <footer>
@@ -233,4 +572,3 @@ sudo aeroloom init</pre>
   </div>
 </body>
 </html>
-

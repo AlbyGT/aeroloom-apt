@@ -26,10 +26,10 @@ Maintainer: AlbyGT <albygt@users.noreply.github.com>
 Depends: nginx (>= 1.18), uacme (>= 1.0), openssl, curl, coreutils
 Filename: pool/main/a/aeroloom/aeroloom_0.3.2_all.deb
 Size: 17210
-MD5sum: 967ef43140fadc375b5dee7ea4f7a8c2
-SHA1: 5f5e996a1a274b7426ad337fce53304b0505775f
-SHA256: 714d2a3969d95335004bdea02bde02fe37040c0652386cc755d10a51a1368e4b
-SHA512: cee34e337f2547189a0b16fef1e14faf450cce9d44e26d5a0e71dac3d85d55f2e8eaf9db0a4a6a1dd9850560f2484c27b91b0137fc66b54618bef53c918a15b2
+MD5sum: 93262033aa41d2296c2f37c0e6f02b72
+SHA1: 5a74fb7e7b99e2f79f8ce1021bc2fb9053207f0b
+SHA256: 8b4686273e2be1791f0986e365c91d1171e5bc3c1c3a32846fd65a4a20171e77
+SHA512: 21edd38776268cf38e4ca3de40c3199fc593202a1b5295d0279ea3e8401eba058348032ae29fa7deedfada100d4c8157ac4ff461e4800b4035b38aeb735441bd
 Homepage: https://github.com/AlbyGT/AeroLoom
 Description: Ultra-lightweight Nginx reverse proxy manager with automatic ACME SSL.
  AeroLoom translates a declarative application table (/etc/aeroloom/apps.conf)
