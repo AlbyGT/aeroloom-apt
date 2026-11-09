@@ -31,7 +31,7 @@ Supported distributions:
 ```sh
 # 1. Install prerequisites and setup keyring directory
 sudo install -m 0755 -d /etc/apt/keyrings
-sudo apt-get update && sudo apt-get install -y curl gnupg
+sudo apt-get update && sudo apt-get install -y --no-install-recommends curl gnupg
 
 # 2. Fetch and import the AeroLoom GPG public key
 curl -fsSL "https://albygt.github.io/aeroloom-apt/keys/aeroloom-archive-keyring.asc" \
@@ -46,7 +46,7 @@ echo "deb [signed-by=/etc/apt/keyrings/aeroloom-archive-keyring.gpg] https://alb
 
 # 4. Synchronize package lists and install AeroLoom
 sudo apt-get update
-sudo apt-get install -y aeroloom
+sudo apt-get install -y --no-install-recommends aeroloom
 
 # 5. Launch the interactive onboarding wizard
 sudo aeroloom init
