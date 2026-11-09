@@ -1,12 +1,32 @@
 # AeroLoom Official APT Repository
 
-Official Debian & Ubuntu package repository for [AeroLoom](https://github.com/AlbyGT/AeroLoom).
+<div align="center">
 
-Ultra-lightweight reverse proxy and zero-downtime ACME SSL manager.
+```
+    ___                     __                         
+   /   | ___  _________  / /   ____  ____  ____ ___ 
+  / /| |/ _ \/ ___/ __ \/ /   / __ \/ __ \/ __ `__ \
+ / ___ /  __/ /  / /_/ / /___/ /_/ / /_/ / / / / / /
+/_/  |_\___/_/   \____/_____/\____/\____/_/ /_/ /_/ 
+```
+
+**Official Debian & Ubuntu package repository for [AeroLoom](https://github.com/AlbyGT/AeroLoom).**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/Platform-Debian%20%7C%20Ubuntu%20LTS-orange.svg)](#installation-instructions-debian--ubuntu)
+[![Main Repo](https://img.shields.io/badge/Source-AlbyGT%2FAeroLoom-blue.svg)](https://github.com/AlbyGT/AeroLoom)
+
+*Ultra-lightweight, zero-daemon Nginx reverse proxy manager with automated TLS and 0.00 MB resident memory.*
 
 ---
 
-## Installation Instructions (Debian 11/12 & Ubuntu 20.04/22.04/24.04)
+</div>
+
+## Installation Instructions (Debian & Ubuntu)
+
+Supported distributions:
+- **Debian:** 11 (Bullseye), 12 (Bookworm)
+- **Ubuntu:** 20.04 (Focal), 22.04 (Jammy), 24.04 (Noble)
 
 ```sh
 # 1. Install prerequisites and setup keyring directory
@@ -33,5 +53,29 @@ sudo aeroloom init
 ```
 
 ---
-Maintained by [AlbyGT](https://github.com/AlbyGT).
 
+## Why AeroLoom?
+
+| Feature | **AeroLoom** | **Nginx Proxy Manager** | **Traefik** | **Caddy** | **Certbot + Nginx** |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Idle Memory (RAM)** | **0.00 MB** *(No daemon)* | 150 MB – 250 MB | 45 MB – 80 MB | 35 MB – 50 MB | 0 MB (cron) / 25 MB (daemon) |
+| **Active Web Server RAM** | **~4 MB** *(Nginx)* | ~4 MB *(Nginx)* | Included above | Included above | ~4 MB *(Nginx)* |
+| **Docker Required?** | **No** *(Native POSIX)* | Yes | Optional | No | No |
+| **Runtime Stack** | **POSIX /bin/sh (dash)** | Node.js + Python + DB | Go Runtime | Go Runtime | Python + 30+ pip packages |
+| **Setup Wizard** | **Yes (`aeroloom init`)** | Web Browser UI | No (CLI / Config) | No (Config file) | Interactive CLI |
+| **Instant DNS Pre-Check** | **Yes** *(dig vs public IP)* | No | No | No | No |
+| **Port Auto-Discovery** | **Yes** *(Node, Docker, etc.)* | No | Docker Provider | No | No |
+| **Config Format** | **1-Line Table (`apps.conf`)** | SQLite / MySQL DB | YAML / TOML | Caddyfile | Complex Vhost blocks |
+| **Zero-Downtime Hot-Swap** | **Yes** *(nginx -s reload)* | Yes | Yes | Yes | Reload command |
+
+---
+
+## Repository Details
+
+- **Public Repository URL:** `https://albygt.github.io/aeroloom-apt/`
+- **Architectures:** `all`, `amd64`, `arm64`
+- **Distribution:** `stable`
+- **Component:** `main`
+- **Main Project & Documentation:** [github.com/AlbyGT/AeroLoom](https://github.com/AlbyGT/AeroLoom)
+
+Maintained by [AlbyGT](https://github.com/AlbyGT). Distributed under the MIT License.

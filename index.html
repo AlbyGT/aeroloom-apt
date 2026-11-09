@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroLoom Official APT Repository</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --heading: #f0f6fc;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --code-bg: #0b0f14;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    pre.ascii {
+      font-family: monospace;
+      color: var(--accent);
+      font-size: 13px;
+      line-height: 1.2;
+      display: inline-block;
+      margin: 0 auto 20px;
+      text-align: left;
+    }
+    h1 {
+      color: var(--heading);
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+    p.lead {
+      font-size: 1.15rem;
+      color: #8b949e;
+      margin: 0 0 24px;
+    }
+    .badge {
+      display: inline-block;
+      background: #1f6feb22;
+      color: var(--accent);
+      border: 1px solid #1f6feb66;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: var(--heading);
+      font-size: 1.3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    pre.code-block {
+      background-color: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.9rem;
+      color: #e6edf3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #21262d;
+      color: var(--heading);
+    }
+    tr:nth-child(even) {
+      background-color: #12161c;
+    }
+    .tag-green {
+      color: var(--green);
+      font-weight: 600;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      color: #8b949e;
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <pre class="ascii">
+    ___                     __                         
+   /   | ___  _________  / /   ____  ____  ____ ___ 
+  / /| |/ _ \/ ___/ __ \/ /   / __ \/ __ \/ __ `__ \
+ / ___ /  __/ /  / /_/ / /___/ /_/ / /_/ / / / / / /
+/_/  |_\___/_/   \____/_____/\____/\____/_/ /_/ /_/ 
+      </pre>
+      <h1>AeroLoom Official APT Repository</h1>
+      <p class="lead">Ultra-lightweight, zero-daemon Nginx reverse proxy & automated TLS manager for Linux.</p>
+      <div class="badge">Debian 11/12 &bull; Ubuntu 20.04/22.04/24.04 LTS &bull; 0.00 MB Idle RAM</div>
+    </header>
+
+    <div class="card">
+      <h2>Install via APT Repository</h2>
+      <p>Run these commands on your Debian or Ubuntu VPS:</p>
+      <pre class="code-block"># 1. Setup keyring directory and fetch GPG key
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo apt-get update && sudo apt-get install -y curl gnupg
+
+curl -fsSL "https://albygt.github.io/aeroloom-apt/keys/aeroloom-archive-keyring.asc" \
+  | gpg --dearmor \
+  | sudo tee /etc/apt/keyrings/aeroloom-archive-keyring.gpg > /dev/null
+
+sudo chmod 0644 /etc/apt/keyrings/aeroloom-archive-keyring.gpg
+
+# 2. Add AeroLoom APT repository
+echo "deb [signed-by=/etc/apt/keyrings/aeroloom-archive-keyring.gpg] https://albygt.github.io/aeroloom-apt/ stable main" \
+  | sudo tee /etc/apt/sources.list.d/aeroloom.list
+
+# 3. Synchronize package lists and install AeroLoom
+sudo apt-get update
+sudo apt-get install -y aeroloom
+
+# 4. Launch the interactive onboarding wizard
+sudo aeroloom init</pre>
+    </div>
+
+    <div class="card">
+      <h2>Why AeroLoom?</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>AeroLoom</th>
+            <th>Nginx Proxy Manager</th>
+            <th>Traefik</th>
+            <th>Caddy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Idle Memory (RAM)</strong></td>
+            <td class="tag-green">0.00 MB (No daemon)</td>
+            <td>150 MB – 250 MB</td>
+            <td>45 MB – 80 MB</td>
+            <td>35 MB – 50 MB</td>
+          </tr>
+          <tr>
+            <td><strong>Docker Required?</strong></td>
+            <td class="tag-green">No (Native POSIX)</td>
+            <td>Yes</td>
+            <td>Optional</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><strong>Runtime Stack</strong></td>
+            <td class="tag-green">POSIX /bin/sh (dash)</td>
+            <td>Node.js + Python + DB</td>
+            <td>Go Runtime</td>
+            <td>Go Runtime</td>
+          </tr>
+          <tr>
+            <td><strong>Setup Wizard</strong></td>
+            <td class="tag-green">CLI with DNS pre-check</td>
+            <td>Web Browser UI</td>
+            <td>None</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td><strong>Zero-Downtime Hot Swap</strong></td>
+            <td class="tag-green">Yes (nginx -s reload)</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Repository Structure</h2>
+      <ul>
+        <li><strong>Distribution:</strong> <code>stable</code></li>
+        <li><strong>Component:</strong> <code>main</code></li>
+        <li><strong>Architectures:</strong> <code>all</code>, <code>amd64</code>, <code>arm64</code></li>
+        <li><strong>Signing Key:</strong> <code>keys/aeroloom-archive-keyring.asc</code></li>
+        <li><strong>Release Manifest:</strong> <a href="dists/stable/Release">dists/stable/Release</a> (Signed via InRelease & Release.gpg)</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>Source Code & Documentation: <a href="https://github.com/AlbyGT/AeroLoom" target="_blank" rel="noopener">github.com/AlbyGT/AeroLoom</a></p>
+      <p>Maintained by <a href="https://github.com/AlbyGT" target="_blank" rel="noopener">AlbyGT</a> &bull; Distributed under the MIT License</p>
+    </footer>
+  </div>
+</body>
+</html>
